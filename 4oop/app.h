@@ -2,7 +2,7 @@
 #define APP_H
 #include<iostream>
 #include "base.h"
-class app : base
+class app : public base
 {
 public:
 	app(base* p);

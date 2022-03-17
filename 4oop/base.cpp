@@ -7,35 +7,37 @@ base::base(base* h, std::string n="Def_name")
 	this->head = h;
 	name = n;
 	if (this->head != nullptr) {
-		this->head->ar_p.push_back(this);
+		this->head->ar_p.emplace(this->head->ar_p.end(),this);
 	}
 }
 
 void base::set_name(std::string n)
 {
-	name = n;
+	this->name = n;
 }
 
 std::string base::get_name()
 {
-	return name;
+	return this->name;
 }
 
 void base::display()
 {
 	base* now = root;
-	std::cout << now->name << std::endl;
+	std::cout << now->get_name();
+	if (now->ar_p.size() != 0) cout << endl;
 	while (now->ar_p.size() != 0) {
-		std::cout << now->name << " ";
+		std::cout << now->name;
 		for (int i = 0; i < now->ar_p.size(); i++) {
-			std::cout << now->ar_p[i]->get_name() << " ";
+			std::cout<< " " << now->ar_p[i]->get_name() ;
 		}
 		now = now->ar_p[now->ar_p.size() - 1];
-		std::cout << std::endl;
+		if(now->ar_p.size() != 0)
+			std::cout << std::endl;
 	}
 }
 
-void base::rebass(base* new_head)
+void base::rebase(base* new_head)
 {
 	if (this != root && new_head != nullptr) {
 		this->get_head_p()->ar_p.erase(find(this->get_head_p()->ar_p.begin(), this->get_head_p()->ar_p.end(),this));
@@ -55,5 +57,5 @@ void base::rebass(base* new_head)
 
 base* base::get_head_p()
 {
-	return head;
+	return this->head;
 }

@@ -14,7 +14,7 @@ public:
 	void set_name(std::string);
 	std::string get_name();
 	void display();
-	void rebass(base* new_per);
+	void rebase(base* new_per);
 	base* get_head_p();
 
 	
