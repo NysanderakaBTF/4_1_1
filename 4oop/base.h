@@ -17,7 +17,6 @@ public:
 	void display();
 	void rebase(base* new_per);
 	base* get_head_p();
-	//base();
 	
 };
 #endif // 
