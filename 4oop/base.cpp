@@ -59,3 +59,7 @@ base* base::get_head_p()
 {
 	return this->head;
 }
+
+base::base()
+{
+}

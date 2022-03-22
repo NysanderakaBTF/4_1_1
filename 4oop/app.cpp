@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-app::app(base* p) :base(p, "root")
+app::app(base_c1* p):base(p, "root")
 {
 		this->head = p;
 		root = this;
@@ -13,18 +13,18 @@ void app::build_tree_objects()
 	std::string n_a, n_b;
 	std::cin >> n_a;
 	root->set_name(n_a);
-	head = new base(root->get_head_p(), n_a);
-	base* temp = nullptr;
+	head = new base_c1(root->get_head_p(), n_a);
+	base_c1* temp = nullptr;
 	base* now = this;
 	do{
 		std::cin >> n_a >> n_b;
 		if(n_a!=n_b) {
 			if (n_a == now->get_name()) {
-				temp = new base(now, n_b);
+				temp = new base_c1(now, n_b);
 			}
 			else {
 				now = now->ar_p[now->ar_p.size() - 1];
-				temp = new base(now, n_b);
+				temp = new base_c1(now, n_b);
 			}
 		}
 	} while (n_a != n_b);
