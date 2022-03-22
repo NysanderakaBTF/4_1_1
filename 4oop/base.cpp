@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-base::base(base* h, std::string n="Def_name")
+base::base(base* h, std::string n)
 {
 	this->head = h;
 	name = n;
@@ -23,7 +23,11 @@ std::string base::get_name()
 
 void base::display()
 {
-	base* now = root;
+	
+	base* now = this;
+	while (now->get_head_p() != nullptr) {
+		now = this->get_head_p();
+	}
 	std::cout << now->get_name();
 	if (now->ar_p.size() != 0) cout << endl;
 	while (now->ar_p.size() != 0) {
@@ -39,16 +43,17 @@ void base::display()
 
 void base::rebase(base* new_head)
 {
-	if (this != root && new_head != nullptr) {
+
+	if (this->get_head_p() != nullptr && new_head != nullptr) {
 		this->get_head_p()->ar_p.erase(find(this->get_head_p()->ar_p.begin(), this->get_head_p()->ar_p.end(),this));
 		this->head = new_head;
 		new_head->ar_p.emplace(new_head->ar_p.begin(),this);
 	}
-	else if (this == root) {
+	else if (this->get_head_p() == nullptr) {
 		new_head->get_head_p()->ar_p.erase(find(new_head->get_head_p()->ar_p.begin(), new_head->get_head_p()->ar_p.end(), new_head));
 		this->head = new_head;
 		new_head->head = nullptr;
-		root = new_head;
+		//root = new_head;
 		new_head->ar_p.emplace(new_head->ar_p.begin(), this);
 		
 	}
@@ -60,6 +65,6 @@ base* base::get_head_p()
 	return this->head;
 }
 
-base::base()
+/*base::base()
 {
-}
+}*/

@@ -5,15 +5,14 @@
 app::app(base_c1* p):base(p, "root")
 {
 		this->head = p;
-		root = this;
+		//root = this;
 }
 
 void app::build_tree_objects()
 {
 	std::string n_a, n_b;
 	std::cin >> n_a;
-	root->set_name(n_a);
-	head = new base_c1(root->get_head_p(), n_a);
+	//root->set_name(n_a);
 	base_c1* temp = nullptr;
 	base* now = this;
 	do{
