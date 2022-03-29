@@ -101,3 +101,59 @@ void base::set_readiness(string na, int stat)
 	}
 }
 
+//void base::print() {
+//	if (!ar_p.empty()) {
+//		cout << '\n' << name << " ";
+//	}
+//	for (int i = 0; i < ar_p.size(); i++) {
+//		if (i + 1 < ar_p.size()) {
+//			cout << ar_p[i]->get_name() << " ";
+//		}
+//		else {
+//			cout << ar_p[i]->get_name();
+//		}
+//	}
+//
+//	for (int i = 0; i < ar_p.size(); i++) {
+//		ar_p[i]->print();
+//	}
+//}
+void base::print() {
+	if (this->get_head_p() == nullptr) {
+		cout << name;
+	}
+	for (int i = 0; i < ar_p.size(); i++) {
+		base* now = ar_p[i];
+		string tabs = "";
+		while (now->get_head_p() != nullptr) {
+			now = now->get_head_p();
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+		}
+		cout << endl<<tabs << ar_p[i]->get_name();
+		ar_p[i]->print();
+	}
+}
+void base::print_ready() {
+	if (this->get_head_p() == nullptr) {
+		if (this->status != 0) cout << name << " is ready";
+			else cout << name << " is not ready";
+	}
+	for (int i = 0; i < ar_p.size(); i++) {
+		base* now = ar_p[i];
+		string tabs = "";
+		while (now->get_head_p() != nullptr) {
+			now = now->get_head_p();
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+			tabs.push_back(' ');
+		}
+		cout << endl << tabs << ar_p[i]->get_name();
+		if (ar_p[i]->status != 0) cout << " is ready";
+		else cout << " is not ready";
+		ar_p[i]->print_ready();
+	}
+}

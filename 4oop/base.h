@@ -20,6 +20,8 @@ public:
 	~base();
 	base* find_n(std::string);
 	void set_readiness(std::string na, int stat);
+	void print();//exeprimental
+	void print_ready();//exeprimental
 
 };
 #endif 
