@@ -2,8 +2,9 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-base::base(base* h, std::string n)
+base::base(base* h, std::string n, int stat)
 {
+	status = stat;
 	head = h;
 	name = n;
 	if (head != nullptr) {

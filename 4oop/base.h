@@ -8,9 +8,10 @@ protected:
 	std::string name;
 	base* head;
 	std::vector<base*> ar_p;
+	int status;
 public:
 
-	base(base*, std::string = "Def_name");
+	base(base*, std::string = "Def_name", int = 0);
 	void set_name(std::string);
 	std::string get_name();
 	void display();
