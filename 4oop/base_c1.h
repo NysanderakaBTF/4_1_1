@@ -6,7 +6,7 @@ class base_c1 :
 	public base
 {
 public:
-	base_c1(base*, string = "Default_name");
+	base_c1(base*, string = "Default_name",int=0);
 };
 
 #endif

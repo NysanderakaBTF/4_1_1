@@ -18,6 +18,8 @@ public:
 	void rebase(base* new_per);
 	base* get_head_p();
 	~base();
+	base* find_n(std::string);
+	void set_readiness(std::string na, int stat);
 
 };
 #endif 

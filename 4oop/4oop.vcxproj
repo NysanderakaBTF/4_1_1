@@ -143,11 +143,21 @@
     <ClCompile Include="app.cpp" />
     <ClCompile Include="base.cpp" />
     <ClCompile Include="base_c1.cpp" />
+    <ClCompile Include="base_c2.cpp" />
+    <ClCompile Include="base_c3.cpp" />
+    <ClCompile Include="base_c4.cpp" />
+    <ClCompile Include="base_c5.cpp" />
+    <ClCompile Include="base_c6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="base_c1.h" />
+    <ClInclude Include="base_c2.h" />
+    <ClInclude Include="base_c3.h" />
+    <ClInclude Include="base_c4.h" />
+    <ClInclude Include="base_c5.h" />
+    <ClInclude Include="base_c6.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

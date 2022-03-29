@@ -21,7 +21,7 @@ std::string base::get_name()
 {
 	return name;
 }
-
+//redo
 void base::display()
 {
 	base* now = this;
@@ -29,7 +29,7 @@ void base::display()
 		now = now->get_head_p();
 	}
 	std::cout << now->get_name();
-	if (now->ar_p.size() != 0) cout << endl;
+	if (now->ar_p.size() != 0) cout << endl<<'\t';
 	while (now->ar_p.size() != 0) {
 		std::cout << now->name;
 		for (int i = 0; i < now->ar_p.size(); i++) {
@@ -40,6 +40,7 @@ void base::display()
 			std::cout << std::endl;
 	}
 }
+
 
 void base::rebase(base* new_per)
 {
@@ -63,3 +64,40 @@ base::~base() {
 		delete ar_p[i];
 	}
 }
+
+base* base::find_n(std::string n)
+{
+	if (this->name == n)
+		return this;
+	base* res=nullptr;
+	for (int i = 0; i < ar_p.size(); i++) {
+		res = ar_p[i]->find_n(n);
+		if (res != nullptr) {
+			return res;
+		}
+	}
+	return nullptr;
+}
+
+void base::set_readiness(string na, int stat)
+{
+	bool ok = true;
+	base* now = find_n(na);
+	base* set = now;
+	if (now != nullptr) {
+		while (now->get_head_p() != nullptr) {
+			now = now->get_head_p();
+			if (now->status == 0) {
+				ok = false;
+				break;
+			}
+		}
+		if (ok) {
+			set->status = stat;
+		}
+		else {
+			set->status = 0;
+		}
+	}
+}
+
