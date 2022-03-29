@@ -2,28 +2,27 @@
 #include <iostream>
 #include <string>
 
-app::app(base_c1* p):base(p, "root")
+app::app(base_c1* p) :base(p, "root")
 {
-		this->head = p;
-		//root = this;
 }
 
 void app::build_tree_objects()
 {
+	base_c1* temp = nullptr;
 	std::string n_a, n_b;
 	std::cin >> n_a;
-	//root->set_name(n_a);
-	base_c1* temp = nullptr;
-	base* now = this;
-	do{
+	this->set_name(n_a);
+	do {
 		std::cin >> n_a >> n_b;
-		if(n_a!=n_b) {
-			if (n_a == now->get_name()) {
-				temp = new base_c1(now, n_b);
+		if (n_a != n_b) {
+			if (n_a == this->get_name()) {
+				temp = new base_c1(this, n_b);
 			}
 			else {
-				now = now->ar_p[now->ar_p.size() - 1];
-				temp = new base_c1(now, n_b);
+				if (temp->get_name() == n_a)
+					temp = new base_c1(temp, n_b);
+				else
+					temp = new base_c1(temp->get_head_p(), n_b);
 			}
 		}
 	} while (n_a != n_b);
@@ -33,8 +32,5 @@ void app::build_tree_objects()
 int app::exec_app()
 {
 	this->display();
-	//this->root->rebase(this->root->ar_p[1]->ar_p[1]);
-	//std::cout << std::endl;
-	//this->display();
 	return 0;
 }
