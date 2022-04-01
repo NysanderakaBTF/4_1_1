@@ -11,7 +11,7 @@ protected:
 	int status;
 public:
 
-	base(base*, std::string = "Def_name", int = 0);
+	base(base*, std::string = "Def_name");
 	void set_name(std::string);
 	std::string get_name();
 	void display();

@@ -5,6 +5,6 @@ class base_c4 :
     public base
 {
 public:
-    base_c4(base*, std::string = "Default_name", int = 0);
+    base_c4(base*, std::string = "Default_name");
 };
 #endif
