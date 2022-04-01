@@ -79,6 +79,42 @@ base* base::find_n(std::string n)
 	return nullptr;
 }
 
+//void base::set_readiness(string na, int stat)
+//{
+//	bool ok = true;
+//	base* now = find_n(na);
+//	base* set = now;
+//	if (now != nullptr && /* new piece*/ stat != 0) {
+//		while (now->get_head_p() != nullptr) {
+//			now = now->get_head_p();
+//			if (now->status == 0) {
+//				ok = false;
+//				break;
+//			}
+//		}
+//		if (ok) {
+//			set->status = stat;
+//		}
+//		else {
+//			set->status = 0;
+//		}
+//	}
+//	if (stat == 0 && now != nullptr) {
+//		while (now->get_head_p() != nullptr) {
+//			now = now->get_head_p();
+//			if (now->status == 0) {
+//				ok = false;
+//				break;
+//			}
+//		}
+//		if (ok) {
+//			for (int i = 0; i < ar_p.size(); i++) {
+//				ar_p[i]->set_readiness(ar_p[i]->get_name(), 0);
+//			}
+//			status = 0;
+//		}
+//	}
+//}
 void base::set_readiness(string na, int stat)
 {
 	bool ok = true;
@@ -93,7 +129,14 @@ void base::set_readiness(string na, int stat)
 			}
 		}
 		if (ok) {
-			set->status = stat;
+			if (stat != 0)
+				set->status = stat;
+			else {
+				for (int i = 0; i < ar_p.size(); i++) {
+					ar_p[i]->set_readiness(ar_p[i]->get_name(), 0);
+				}
+				set->status = 0;
+			}
 		}
 		else {
 			set->status = 0;
