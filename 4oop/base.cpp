@@ -132,8 +132,8 @@ void base::set_readiness(string na, int stat)
 			if (stat != 0)
 				set->status = stat;
 			else {
-				for (int i = 0; i < ar_p.size(); i++) {
-					ar_p[i]->set_readiness(ar_p[i]->get_name(), 0);
+				for (int i = 0; i < set->ar_p.size(); i++) {
+					set->ar_p[i]->set_readiness(set->ar_p[i]->get_name(), 0);
 				}
 				set->status = 0;
 			}
@@ -143,6 +143,31 @@ void base::set_readiness(string na, int stat)
 		}
 	}
 }
+
+//void base::set_readiness(string na, int stat)
+//{
+//	base* now = find_n(na);
+//	base* set = now;
+//	if (now != nullptr) {
+//		while (now->get_head_p() != nullptr || now->status != 0) {
+//			now = now->get_head_p();
+//		}
+//		if (now->status) {
+//			if (stat != 0)
+//				set->status = stat;
+//			else {
+//				for (int i = 0; i < set->ar_p.size(); i++) {
+//					set->ar_p[i]->set_readiness(set->ar_p[i]->get_name(), 0);
+//				}
+//				set->status = 0;
+//			}
+//		}
+//		else {
+//			set->status = 0;
+//		}
+//	}
+//}
+
 
 //void base::print() {
 //	if (!ar_p.empty()) {
@@ -170,10 +195,7 @@ void base::print() {
 		string tabs = "";
 		while (now->get_head_p() != nullptr) {
 			now = now->get_head_p();
-			tabs.push_back(' ');
-			tabs.push_back(' ');
-			tabs.push_back(' ');
-			tabs.push_back(' ');
+			tabs =tabs+ " " + " " + " " + " ";
 		}
 		cout << endl<<tabs << ar_p[i]->get_name();
 		ar_p[i]->print();
@@ -189,10 +211,7 @@ void base::print_ready() {
 		string tabs = "";
 		while (now->get_head_p() != nullptr) {
 			now = now->get_head_p();
-			tabs.push_back(' ');
-			tabs.push_back(' ');
-			tabs.push_back(' ');
-			tabs.push_back(' ');
+			tabs = tabs + " " + " " + " " + " ";
 		}
 		cout << endl << tabs << ar_p[i]->get_name();
 		if (ar_p[i]->status != 0) cout << " is ready";

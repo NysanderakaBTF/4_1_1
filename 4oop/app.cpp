@@ -114,7 +114,9 @@ int app::exec_app()
 	print();
 	cout<< endl << "The tree of objects and their readines"<<endl ;
 	print_ready();
-	set_readiness(name, 0);
+	string ss;
+	cin >> ss;
+	set_readiness(ss, 0);
 	cout << endl;
 	print_ready();
 	return 0;
